@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Article; // подключил модель Article
+use App\User;
 
 class Core extends Controller
 {
@@ -97,11 +98,18 @@ class Core extends Controller
         
         //$article = Article::find(3);
         //$article->forceDelete();
-        
-        
-        $articles = Article::all();
-        dump($articles);
+        //$articles = Article::all();
+        //dump($articles);
         //dump($article);
+        
+
+        //$user = User::find(1);
+        //dump($user->country);
+
+        $user = User::find(1);
+        $articles = $user->articles()->where('id','>',3)->get();
+
+        dump($articles);
 
         return;
 

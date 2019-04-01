@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-//use App\User;
-//use App\Country;
+//use \App\User;
+//use \App\Country;
 
 
 class UserTableSeeder extends Seeder
@@ -17,8 +17,8 @@ class UserTableSeeder extends Seeder
         //
         
 
-        factory(App\User::class, 2)->create()->each(function($u) {
-            $u->country()->save(factory(App\Country::class)->make());
+        factory(\App\User::class, 1)->create()->each(function($u) {
+            $u->country()->save(factory(\App\Country::class)->make());
         });    
         
     }

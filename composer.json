@@ -37,6 +37,9 @@
         },
         "classmap": [
             "database/seeds",
+            
+            "app/Country.php",
+            
             "database/factories"
         ]
     },
