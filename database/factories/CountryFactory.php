@@ -1,9 +1,10 @@
 <?php
 
 use Faker\Generator as Faker;
-//use \App\Country;
 
-$factory->define(Model::class, function (Faker $faker) {
+use \App\Country;
+
+$factory->define(Country::class, function (Faker $faker) {
     return [
         //
         'name' => $faker->unique->address,

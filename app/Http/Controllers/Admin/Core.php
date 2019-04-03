@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Article; // подключил модель Article
 use App\User;
+use App\Role;
 
 class Core extends Controller
 {
@@ -106,10 +107,24 @@ class Core extends Controller
         //$user = User::find(1);
         //dump($user->country);
 
-        $user = User::find(1);
-        $articles = $user->articles()->where('id','>',3)->get();
+        //$user = User::find(1);
 
-        dump($articles);
+        //$articles = $user->articles()->where('id','>',3)->get();
+        //$articles = $user->articles;
+
+        //dump($articles);
+//        foreach($articles as $article) {
+//             echo $article->name.'<br>';
+//        }
+        //$user = User::find(1);
+/*
+        foreach($user->roles as $role) {
+            echo $role->name.'<br>';
+        }
+*/        
+        $role = Role::find(1);
+
+        dump($role);
 
         return;
 

@@ -36,10 +36,7 @@
             "App\\": "app/"
         },
         "classmap": [
-            "database/seeds",
-            
-            "app/Country.php",
-            
+            "database/seeds",            
             "database/factories"
         ]
     },
