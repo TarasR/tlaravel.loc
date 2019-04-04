@@ -19,8 +19,21 @@ class ContactController extends Controller
     public function show()       
     {        
 //        dump($this->request);
-        print_r($this->request->all());
-        echo "<h1> {$this->request->email}</h1>";
+        if($this->request->isMethod('post')) {
+            
+            $rules = [
+                'email' => 'required|email',
+                'password' => 'required'
+            ];
+            //dump($this->request->all());
+
+            $this->validate($this->request,$rules);
+        }
+        
+        dump($this->request->all());
+        
+        //print_r($this->request->all());
+        //echo "<h1> {$this->request->email}</h1>";
 
         if (view()->exists('default.contact'))
         {

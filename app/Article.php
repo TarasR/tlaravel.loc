@@ -16,7 +16,17 @@ class Article extends Model
     protected $guarded = ['*']; // запрешает добавлять в эти поля в модели
     protected $dates = ['deleted_at'];
 
+    protected $casts = ['name' => 'string']; // Указания явного типа поля
+
     public function user() {
-        return $this->belonsTo(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function getNameAttribute($value) {
+        return 'Head '.$value;
+    }
+
+    public function setNameAttribute($value) {
+        $this->attributes['name'] = ' | '.$value;
     }
 }
