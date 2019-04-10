@@ -26,6 +26,12 @@
             </div>
         @endif
 
+        @cannot('update', $article)
+            <div class="alert alert-danger">
+                You don't have acsess
+            </div>
+        @endcannot
+
         <form method="post" action="{{ route('admin_update_post_p') }}">
             @csrf
             <input type="hidden" name="_token" value="{{ csrf_token }}">

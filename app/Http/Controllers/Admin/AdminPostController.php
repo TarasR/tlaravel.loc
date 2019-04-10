@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use Gate;
+use App\Article;
 
 class AdminPostController extends Controller
 {
@@ -22,7 +23,10 @@ public function show() {
 
     public function create(Request $request) {
         
-        if(Gate::denies('add-article')) {
+        //if(Gate::denies('add-article')) { // for rules
+        $article = new Article;
+        //if(Gate::denies('add',$article)) { // for policy
+        if($request->user()->cannot('add',$article)) { // enother method  
             return redirect()->back()->with(['message'=>'You have no permisions']);
         }
 

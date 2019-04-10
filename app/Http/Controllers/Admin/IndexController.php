@@ -13,7 +13,8 @@ class IndexController extends Controller
         {
             return view('default.index')->withTitle('Laravel Project');  
         }
-        abort(404);
+        //abort(404);
+        return view('home');
         
     }
 }

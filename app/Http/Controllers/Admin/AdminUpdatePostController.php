@@ -33,7 +33,8 @@ class AdminUpdatePostController extends Controller
         $data = $request->except('_token');
         $article = Article::find($data['id']);
 
-        if(Gate::/*forUser()->*/allows('update-article',$article)) {
+        //if(Gate::/*forUser()->*/allows('update-article',$article)) {
+        if(Gate::/*forUser()->*/allows('update',$article)) {            
             $article->name = $data['name'];
             $article->img = $data['img'];
             $article->text = $data['text'];

@@ -25,6 +25,7 @@ class ContactController extends Controller
     //public function store(ContactRequest $request)       
     public function store(Request $request)       
     {        
+
 //        dump($this->request);
         if($request->isMethod('post')) {
             // Ручная валидация данных
@@ -72,8 +73,17 @@ class ContactController extends Controller
         }
     }
 
-    public function show()       
+    public function show(Request $request)  
     {        
+    //Работа с сесиями старт 
+
+        //$result = $request->session()->get('key','default');
+        //$result = $request->session()->all();
+//        $result = $request->session()->put('key', 'value');
+
+//        dump($result);
+//Работа с сесиями конец        
+
         if (view()->exists('default.contact'))
         {
             $data = array('title'=>'LARAVEL PROJECT CONTACTS');

@@ -42,5 +42,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>['web','auth']], function() {
 
     Route::get('/update/post/{id}', ['uses' => 'Admin\AdminUpdatePostController@show'])->name('admin_update_post');
     Route::post('/update/post', ['uses' => 'Admin\AdminUpdatePostController@create'])->name('admin_update_post_p');
+
+    Route::group(['prefix'=>'products'], function() {
+
+        Route::get('/', ['uses' => 'ProductsController@execute'])->name('products');
+        Route::match(['get','post'],'/add',['uses' => 'ProductsAddController@execute'])->name('productsAdd');
+        Route::match(['get', 'post', 'delete'], '/edit{product}', ['uses' => 'ProductEditController@execute'])->name('productEdit');
+    });
     
 });
