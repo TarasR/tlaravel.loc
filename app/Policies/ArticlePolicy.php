@@ -31,7 +31,7 @@ class ArticlePolicy
 
     public function update(User $user, $article) {
         foreach($user->roles as $role) {
-            if($role->name == 'admin') {
+            if($role->name == 'Admin') {
                 if($user->id == $article->user_id) {
                     return true;
                 }                

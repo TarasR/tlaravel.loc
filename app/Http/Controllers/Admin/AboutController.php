@@ -20,7 +20,7 @@ class AboutController extends Controller
             $data = DB::select("select * from articles");
             $tmpkeys = $data[0];
             */
-            //dump($articles);
+            //dump($page);
             //return view('default.about')->with('data', $data)->with('title', $title)->with('hTitle',$tmpkeys);
 
             return view('default.about')->with('page', $page[0])->with('title', $title);

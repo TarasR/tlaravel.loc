@@ -48,6 +48,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['web','auth']], function() {
         Route::get('/', ['uses' => 'ProductsController@execute'])->name('products');
         Route::match(['get','post'],'/add',['uses' => 'ProductsAddController@execute'])->name('productsAdd');
         Route::match(['get', 'post', 'delete'], '/edit{product}', ['uses' => 'ProductEditController@execute'])->name('productEdit');
+        Route::get('/{slug}', ['uses' => 'ProductController@execute'])->name('product');
+
     });
     
 });
