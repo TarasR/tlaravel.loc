@@ -31,6 +31,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 */
 // By hand
+
 Auth::routes();
 
 Route::group(['prefix'=>'admin', 'middleware'=>['web','auth']], function() {
@@ -46,8 +47,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['web','auth']], function() {
     Route::group(['prefix'=>'products'], function() {
 
         Route::get('/', ['uses' => 'ProductsController@execute'])->name('products');
-        Route::match(['get','post'],'/add',['uses' => 'ProductsAddController@execute'])->name('productsAdd');
-        Route::match(['get', 'post', 'delete'], '/edit{product}', ['uses' => 'ProductEditController@execute'])->name('productEdit');
+        Route::match(['get','post'],'/add',['uses' => 'Admin\ProductsAddController@execute'])->name('productsAdd');
+        Route::get('/edit/{product}', ['uses' => 'Admin\ProductEditController@execute'])->name('productEdit');
+        //Route::match(['post', 'delete'],'/edit', ['uses' => 'Admin\ProductEditController@execute'])->name('productEdit_p');
         Route::get('/{slug}', ['uses' => 'ProductController@execute'])->name('product');
 
     });

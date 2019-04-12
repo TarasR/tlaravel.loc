@@ -13,7 +13,7 @@ class AdminPostController extends Controller
     //
 
 
-public function show() {
+    public function show() {
         if(view()->exists('default.add_post')) {
             $title = 'Add new article';
             return view('default.add_post')->with('title', $title);

@@ -33,8 +33,8 @@
         @endcannot
 
         <form method="post" action="{{ route('admin_update_post_p') }}">
-            @csrf
-            <input type="hidden" name="_token" value="{{ csrf_token }}">
+
+        
             <input type="hidden" name="id" value="{{ $article->id }}">
             <div class="form-group">
                 <label for="exampleInputEmail1">Head</label>

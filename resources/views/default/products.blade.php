@@ -10,17 +10,21 @@
 @endsection
 
 @section('sidebar')
+    
     @parent
 @endsection
 
 @section('content')
+
+<!--    <a href="#" class="btn btn-primary">Add</a> -->
+
 <div>
     <table class="table">
         <thead class="thead-dark"> 
             <tr>            
                 <th>id</th>
                 <th>title</th>
-                <th>action</th>
+                <th colspan=2>action</th>
             </tr>                
         </thead>
 
@@ -31,16 +35,12 @@
                     <td><a href="/admin/products/{{ $mas->slug }}">{{ $mas->title }}</a> </td>
                     <td>
                         <div>
-                            <form class="form-inline">                                
-                                <button type="submit" class="btn btn-primary my-1">Add</button>
-                            </form>
+                            <a href="/admin/products/edit/{{ $mas->id }}" class="btn btn-primary">Edit</a>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <form class="form-inline">                                
-                                <button type="submit" class="btn btn-primary my-1">Edit</button>
-                            </form>
+                            <a href="#" class="btn btn-primary">Delete</a>
                         </div>
                     </td>
                         
@@ -49,6 +49,11 @@
         </tbody>    
     </table>
 </div>
+
+<div>
+    <a href="{{ route('productsAdd') }}" class="btn btn-primary">Add product</a>
+</div>
+
 @endsection
 
 
