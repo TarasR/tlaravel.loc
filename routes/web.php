@@ -48,8 +48,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['web','auth']], function() {
 
         Route::get('/', ['uses' => 'ProductsController@execute'])->name('products');
         Route::match(['get','post'],'/add',['uses' => 'Admin\ProductsAddController@execute'])->name('productsAdd');
-        Route::get('/edit/{product}', ['uses' => 'Admin\ProductEditController@execute'])->name('productEdit');
-        //Route::match(['post', 'delete'],'/edit', ['uses' => 'Admin\ProductEditController@execute'])->name('productEdit_p');
+//        Route::get('/edit/{product}', ['uses' => 'Admin\ProductEditController@execute'])->name('productEdit');
+        Route::match(['get', 'post', 'delete'],'/edit/{product}', ['uses' => 'Admin\ProductEditController@execute'])->name('productEdit');
+        Route::get('/delete/{id}', ['uses' => 'Admin\ProductEditController@destroy'])->name('productDelete');
         Route::get('/{slug}', ['uses' => 'ProductController@execute'])->name('product');
 
     });

@@ -34,13 +34,13 @@
                     <td> {{ $mas->id }}</td>                        
                     <td><a href="/admin/products/{{ $mas->slug }}">{{ $mas->title }}</a> </td>
                     <td>
-                        <div>
+                        <div>                        
                             <a href="/admin/products/edit/{{ $mas->id }}" class="btn btn-primary">Edit</a>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <a href="#" class="btn btn-primary">Delete</a>
+                            <a href="/admin/products/delete/{{ $mas->id }}" class="btn btn-primary">Delete</a>   
                         </div>
                     </td>
                         

@@ -10,12 +10,28 @@
 
 @section('content')
     <div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <form method="post" action="{{ route('productEdit',['product' => $data['id']]) }}">
             @csrf
             
 
             <div class="form-group">
-                <input type="hidden" name="id" value ="{{ old('id') }}" id="{{ $data['id'] }}">
+                <input type="hidden" name="id" value ="{{ $data['id'] }}">
             </div>
             <div class="form-group">
                 <label for="exampleInputTitle">Title</label>
