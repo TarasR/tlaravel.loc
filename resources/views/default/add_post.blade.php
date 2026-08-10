@@ -2,11 +2,11 @@
 
 @section('navbar')
     @parent
-@endSection
+@endsection
 
 @section('sidebar')
     @parent
-@Endsection
+@endsection
 
 @section('content')
     <div>
@@ -44,4 +44,4 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-@Endsection
+@endsection

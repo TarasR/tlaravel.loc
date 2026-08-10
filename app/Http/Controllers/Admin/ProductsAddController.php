@@ -2,60 +2,33 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
-Use Validator;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
-
 
 class ProductsAddController extends Controller
 {
-    //
-    public function execute (Request $request) {
-        if($request->isMethod('post')) {
-
-            /*$this->validate($request, [
+    public function execute(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $validator = Validator::make($request->all(), [
                 'title' => 'required|max:255',
-                //'slug' => 'required|alpha_dash',
-                'price' => 'required|digits_between:0,1000000'
-            ]);*/           
-
-            
-            $product = new Product;
-
-            $data = $request->all();
-            //dd($data);
-            $validator = Validator::make($data, [
-                'title' => 'required|max:255',
-                //'slug' => 'required|alpha_dash',
-                'price' => 'required|digits_between:0,1000000'
+                'price' => 'required|digits_between:0,1000000',
             ]);
 
-            $res = $product->create([
-                'title' => $data['title'],
-                'slug' => $data['slug'],
-                'price' => $data['price'],
-                'description' => $data['description']
-            ]);
-            if($validator->fails()) {
-                return redirect()->route('productsAdd')->withErrors($data)->withInput();
+            if ($validator->fails()) {
+                return redirect()->route('productsAdd')->withErrors($validator)->withInput();
             }
-            
+
+            Product::create($request->only('title', 'slug', 'price', 'description'));
+
             return redirect()->route('products');
-                
         }
-        
 
+        $slug = Str::random(rand(30, 70));
 
-        if(view()->exists('default.add_product')) {            
-            $slug = Str::random(rand ( 30 , 70) );
-
-            $title = 'Page add product';            
-            return view('default.add_product')->with(['title' => $title, 'slug' => $slug]);
-        }
-        abort(404);
+        return view('default.add_product', ['title' => 'Add product', 'slug' => $slug]);
     }
 }

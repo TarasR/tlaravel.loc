@@ -2,7 +2,7 @@
 
 @section('navbar')
     @parent
-@endSection
+@endsection
 
 @section('sidebar')
     @parent
@@ -31,11 +31,11 @@
 
             <div class="form-group">
                 <input type="hidden" name="_method" value ="delete">
-            </div>            
+            </div>
 
             <button type="submit" class="btn btn-primary">Delete</button>
         </form>
 
-        
+
     </div>
 @endsection

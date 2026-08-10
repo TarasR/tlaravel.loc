@@ -2,11 +2,11 @@
 
 @section('navbar')
     @parent
-@endSection
+@endsection
 
 @section('sidebar')
     @parent
-@Endsection
+@endsection
 
 @section('content')
     <div>
@@ -33,8 +33,7 @@
         @endcannot
 
         <form method="post" action="{{ route('admin_update_post_p') }}">
-
-        
+            @csrf
             <input type="hidden" name="id" value="{{ $article->id }}">
             <div class="form-group">
                 <label for="exampleInputEmail1">Head</label>
@@ -52,4 +51,4 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
-@Endsection
+@endsection

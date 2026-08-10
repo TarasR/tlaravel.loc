@@ -2,7 +2,7 @@
 
 @section('navbar')
     @parent
-@endSection
+@endsection
 
 @section('sidebar')
     @parent
@@ -32,7 +32,7 @@
                 <label for="exampleInputTitle">Title</label>
                 <input type="text" class="form-control" name="title" value ="{{ old('title') }}" id="exampleInputTitle" aria-describedby="Title" placeholder="Enter title">
             </div>
-            
+
             <div class="form-group">
                 <label for="exampleInputSlug">Slug</label>
                 <input type="text" class="form-control" name="slug" value ="{{ $slug }}" id="exampleInputSlug" placeholder="{{ $slug }}" readonly>
