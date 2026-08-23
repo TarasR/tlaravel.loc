@@ -3,11 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\User;
-use App\Country;
 
-
-class UserTableSeeder extends Seeder
+class CountriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +13,12 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(1)->create()->each(function ($u) {
-            $u->country()->save(Country::factory()->make());
+        //
+/*        factory(App\User::class, 10)->create()->each(function($u) {
+            $u->profile()->save(factory(App\Profile::class)->make());
         });
+*/  
+
+
     }
 }

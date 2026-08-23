@@ -1,13 +1,21 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-$factory->define(App\Product::class, function (Faker $faker) {
-    return [
-        // 'name' => $faker->unique->address,
-        'title' => $faker->word, 
-        'slug' => $faker->slug, 
-        'price' => $faker->numberBetween(0,1000000), 
-        'description' => $faker->realText,
-    ];
-});
+use App\Product;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ProductFactory extends Factory
+{
+    protected $model = Product::class;
+
+    public function definition()
+    {
+        return [
+            'title' => $this->faker->word,
+            'slug' => $this->faker->slug,
+            'price' => $this->faker->numberBetween(0, 1000000),
+            'description' => $this->faker->realText,
+        ];
+    }
+}
