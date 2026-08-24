@@ -32,7 +32,7 @@
 
             <h5>Tech stack</h5>
             <ul>
-                <li>PHP / Laravel 5.8</li>
+                <li>PHP 8.3 / Laravel 13</li>
                 <li>MySQL</li>
                 <li>Bootstrap 4</li>
                 <li>Blade templates</li>
