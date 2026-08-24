@@ -16,7 +16,7 @@ class ProductEditController extends Controller
         if ($request->isMethod('post')) {
             $input = $request->except('_token');
             $validator = Validator::make($input, [
-                'name' => 'required|max:255',
+                'title' => 'required|max:255',
                 'price' => 'required|digits_between:0,1000000'
             ]);
 
