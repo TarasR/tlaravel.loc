@@ -2,18 +2,17 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Country;
 use App\Article;
-use App\Role;
 
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +20,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'login', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -30,7 +31,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
 
@@ -43,27 +45,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-// мой код начало 
     /*
         public function profile() {
             return $this->hasOne(Profile::class);
         }
-    */   
+    */
 
-    public function country() {
-        return $this->hasOne(Country::class);    
-        //return $this->hasOne('App\Country');    
+    public function country()
+    {
+        return $this->hasOne(Country::class);
+        //return $this->hasOne('App\Country');
     }
 
 
-    public function articles(){
+    public function articles()
+    {
         return $this->hasMany(Article::class);
     }
 
 
-    public function roles() {
+    public function roles()
+    {
         return $this->belongsToMany('App\Role');
     }
-// мой код конец
-
 }

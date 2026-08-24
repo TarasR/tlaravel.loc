@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CountriesSeeder extends Seeder
@@ -12,11 +14,9 @@ class CountriesSeeder extends Seeder
     public function run()
     {
         //
-/*        factory(App\User::class, 10)->create()->each(function($u) {
+        /*        factory(App\User::class, 10)->create()->each(function($u) {
             $u->profile()->save(factory(App\Profile::class)->make());
         });
-*/  
-
-
+*/
     }
 }

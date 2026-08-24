@@ -2,51 +2,34 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Auth;
 use App\Article;
-use Gate;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AdminUpdatePostController extends Controller
 {
-    //
-    public function show(Request $reqiuest, $id) {
-        
-        $article = Article::find($id);
-        //dump($article->text);
-        
-        if(view()->exists('default.update_post')){
-            $title = 'Update article';
-            return view('default.update_post')->with('article', $article)->with('title',$title);
-        }
-        abort(404);
+    public function show(int $id): View
+    {
+        $article = Article::findOrFail($id);
+
+        return view('default.update_post', ['article' => $article, 'title' => 'Update article']);
     }
 
-    public function create(Request $request) {
-
+    public function create(Request $request): RedirectResponse
+    {
         $this->validate($request, [
-            'name'=>'required'
+            'name' => 'required',
         ]);
 
-        $user = Auth::user();
-        $data = $request->except('_token');
-        $article = Article::find($data['id']);
+        $article = Article::findOrFail($request->input('id'));
 
-        //if(Gate::/*forUser()->*/allows('update-article',$article)) {
-        if(Gate::/*forUser()->*/allows('update',$article)) {            
-            $article->name = $data['name'];
-            $article->img = $data['img'];
-            $article->text = $data['text'];
-    
-            $res = $user->articles()->save($article);
-            return redirect()->back()->with('message', 'Article was updated');             
-        }
-        return redirect()->back()->with(['message' => 'You have\'t acsess']);
+        $this->authorize('update', $article);
 
+        $article->fill($request->only('name', 'img', 'text'));
+        $request->user()->articles()->save($article);
 
-
-
-
+        return redirect()->back()->with('message', 'Article was updated');
     }
 }

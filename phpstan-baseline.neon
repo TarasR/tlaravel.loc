@@ -1,0 +1,139 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Exceptions\\Handler\:\:render\(\) should return Illuminate\\Http\\Response but returns Symfony\\Component\\HttpFoundation\\Response\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Exceptions\\Handler\:\:\$dontFlash is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Exceptions\\Handler\:\:\$dontFlash\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Exceptions\\Handler\:\:\$dontReport is not covariant with PHPDoc type array\<int, class\-string\<Throwable\>\> of overridden property Illuminate\\Foundation\\Exceptions\\Handler\:\:\$dontReport\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: '#^Call to method Illuminate\\Contracts\\View\\Factory\:\:exists\(\) with ''default\.index'' will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: app/Http/Controllers/Admin/IndexController.php
+
+		-
+			message: '#^Call to method Illuminate\\Contracts\\View\\Factory\:\:exists\(\) with ''default\.edit_product'' will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: app/Http/Controllers/Admin/ProductEditController.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Kernel\:\:\$middleware is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$middleware\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Kernel\:\:\$middlewareGroups is not covariant with PHPDoc type array\<string, array\<int, string\>\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$middlewareGroups\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Kernel\:\:\$middlewarePriority is not covariant with PHPDoc type array\<string\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$middlewarePriority\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Kernel\:\:\$routeMiddleware is not covariant with PHPDoc type array\<string, string\> of overridden property Illuminate\\Foundation\\Http\\Kernel\:\:\$routeMiddleware\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: '#^Method App\\Http\\Middleware\\Authenticate\:\:redirectTo\(\) should return string but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: app/Http/Middleware/Authenticate.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Middleware\\CheckForMaintenanceMode\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/CheckForMaintenanceMode.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Middleware\\EncryptCookies\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Cookie\\Middleware\\EncryptCookies\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/EncryptCookies.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Middleware\\TrimStrings\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Middleware\\TrimStrings\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/TrimStrings.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Middleware\\TrustProxies\:\:\$proxies is not covariant with PHPDoc type array\<int, string\>\|string\|null of overridden property Illuminate\\Http\\Middleware\\TrustProxies\:\:\$proxies\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/TrustProxies.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Http\\Middleware\\VerifyCsrfToken\:\:\$except is not covariant with PHPDoc type array\<int, string\> of overridden property Illuminate\\Foundation\\Http\\Middleware\\PreventRequestForgery\:\:\$except\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Access to an undefined property App\\User\:\:\$roles\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Policies/ArticlePolicy.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Providers\\AuthServiceProvider\:\:\$policies is not covariant with PHPDoc type array\<class\-string, class\-string\> of overridden property Illuminate\\Foundation\\Support\\Providers\\AuthServiceProvider\:\:\$policies\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Providers/AuthServiceProvider.php
+
+		-
+			message: '#^PHPDoc type array of property App\\Providers\\EventServiceProvider\:\:\$listen is not covariant with PHPDoc type array\<string, array\<int, string\>\> of overridden property Illuminate\\Foundation\\Support\\Providers\\EventServiceProvider\:\:\$listen\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/Providers/EventServiceProvider.php
+
+		-
+			message: '#^PHPDoc type array of property App\\User\:\:\$casts is not covariant with PHPDoc type array\<string, string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$casts\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/User.php
+
+		-
+			message: '#^PHPDoc type array of property App\\User\:\:\$fillable is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$fillable\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/User.php
+
+		-
+			message: '#^PHPDoc type array of property App\\User\:\:\$hidden is not covariant with PHPDoc type list\<string\> of overridden property Illuminate\\Database\\Eloquent\\Model\:\:\$hidden\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: app/User.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:country\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: database/seeders/UserTableSeeder.php
+
+		-
+			message: '#^Call to static method channel\(\) on an unknown class Broadcast\.$#'
+			identifier: class.notFound
+			count: 1
+			path: routes/channels.php

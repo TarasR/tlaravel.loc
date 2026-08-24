@@ -4,86 +4,66 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Page;
 
 class CoreResourse extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
-        echo __METHOD__;
+        $pages = Page::all();
 
+        return view('pages.index', ['pages' => $pages, 'title' => 'Pages']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
-        echo __METHOD__;
+        return view('pages.create', ['title' => 'Create page']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // Для метода POST передача данных с формы
+        $request->validate([
+            'name'  => 'required|string|max:255',
+            'alias' => 'required|string|max:255|unique:pages,alias',
+            'text'  => 'required|string',
+        ]);
+
+        Page::create($request->only('name', 'alias', 'text'));
+
+        return redirect()->route('pages.index')->with('message', 'Page created.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
-        echo $id;
+        $page = Page::findOrFail($id);
+
+        return view('pages.show', ['page' => $page, 'title' => $page->name]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        return view('pages.edit', ['page' => $page, 'title' => 'Edit page']);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'  => 'required|string|max:255',
+            'alias' => 'required|string|max:255|unique:pages,alias,' . $id,
+            'text'  => 'required|string',
+        ]);
+
+        Page::findOrFail($id)->update($request->only('name', 'alias', 'text'));
+
+        return redirect()->route('pages.index')->with('message', 'Page updated.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Page::findOrFail($id)->delete();
+
+        return redirect()->route('pages.index')->with('message', 'Page deleted.');
     }
 }
