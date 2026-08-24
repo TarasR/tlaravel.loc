@@ -9,7 +9,7 @@ class CountryFactory extends Factory
 {
     protected $model = Country::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->unique()->address,
