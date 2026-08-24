@@ -26,7 +26,7 @@ Route::get('/contact', 'Admin\ContactController@show')->name('contact');
 Route::post('/contact', 'Admin\ContactController@store');
 //Route::match(['get','post'],'/contact',['uses'=>'Admin\ContactController@show'])->name('contact');
 
-Route::resource('/pages', 'Admin\CoreResourse');
+Route::resource('/pages', 'Admin\CoreResourse')->middleware('auth');
 
 /*
 // Authentification automaticly
